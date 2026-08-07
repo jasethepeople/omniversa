@@ -1,0 +1,38 @@
+[engine]
+tick_interval_ms = 100
+max_history = 10000
+
+[cfd]
+grid_resolution = 128
+time_step = 0.001
+kinematic_viscosity = 0.01
+
+[gravity]
+gravitational_constant = 6.674e-5
+softening_length = 0.1
+
+[hawkes]
+base_intensity = 0.1
+self_excitation_alpha = 0.5
+decay_beta = 2.0
+
+[neural]
+n_neurons = 10000
+resting_potential = -65.0
+threshold_potential = -55.0
+
+[narrative]
+n_topics = 50
+viral_coefficient_threshold = 2.0
+
+[bayesian]
+n_chains = 4
+n_samples = 2000
+step_size = 0.1
+
+[topology]
+max_nodes = 1000000
+whale_threshold = 1000000.0
+
+[telemetry]
+prometheus_port = 9090

@@ -1,0 +1,17 @@
+[package]
+name = "webgpu-viz"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+wgpu = { workspace = true }
+pollster = { workspace = true }
+serde = { workspace = true }
+tracing = { workspace = true }
+nalgebra = { workspace = true }
+bytemuck = { version = "1.16", features = ["derive"] }
+
+[dev-dependencies]
+criterion = { workspace = true }

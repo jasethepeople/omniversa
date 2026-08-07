@@ -1,0 +1,49 @@
+syntax = "proto3";
+package omniversa;
+
+service Omniversa {
+  rpc StreamFragility(FragilityRequest) returns (stream FragilitySnapshot);
+  rpc InjectEvent(MarketEvent) returns (EventAck);
+  rpc GetManifold(ManifoldRequest) returns (ManifoldData);
+}
+
+message FragilityRequest {
+  string client_id = 1;
+}
+
+message FragilitySnapshot {
+  uint64 timestamp_ns = 1;
+  double fragility_score = 2;
+  ManifoldPoint phase_space = 3;
+}
+
+message ManifoldPoint {
+  double liquidity_viscosity = 1;
+  double whale_gravity = 2;
+  double cascade_stress = 3;
+  double neural_voltage = 4;
+  double narrative_pressure = 5;
+  double bayesian_entropy = 6;
+}
+
+message MarketEvent {
+  string symbol = 1;
+  double price = 2;
+  double volume = 3;
+  uint64 timestamp_ns = 4;
+}
+
+message EventAck {
+  bool accepted = 1;
+  uint64 timestamp_ns = 2;
+}
+
+message ManifoldRequest {
+  uint32 resolution = 1;
+}
+
+message ManifoldData {
+  repeated float vertices = 1;
+  repeated uint32 indices = 2;
+  double fragility_score = 3;
+}

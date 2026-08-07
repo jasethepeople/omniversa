@@ -1,0 +1,71 @@
+[workspace]
+members = [
+    "crates/omniversa-core",
+    "crates/liquidity-cfd",
+    "crates/gravity-whale",
+    "crates/cascade-hawkes",
+    "crates/neural-panic",
+    "crates/narrative-nlp",
+    "crates/bayesian-risk",
+    "crates/ugt-graph",
+    "crates/webgpu-viz",
+]
+resolver = "2"
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+authors = ["OMNIVERSA Sovereign Systems <sovereign@omniversa.io>"]
+license = "AGPL-3.0"
+repository = "https://github.com/omniversa/omniversa"
+rust-version = "1.78"
+
+[workspace.dependencies]
+# Core
+tokio = { version = "1.37", features = ["full", "parking_lot"] }
+rayon = "1.10"
+parking_lot = "0.12"
+crossbeam = "0.8"
+# Math & Physics
+nalgebra = "0.33"
+ndarray = { version = "0.15", features = ["rayon", "serde"] }
+faer = "0.19"
+# GPU
+wgpu = "22"
+pollster = "0.3"
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+apache-avro = "0.17"
+flatbuffers = "24.3"
+# Async
+futures = "0.3"
+async-trait = "0.1"
+# Data
+arrow = "52"
+clickhouse = "0.11"
+redis = { version = "0.25", features = ["tokio-comp", "connection-manager"] }
+# ML
+candle-core = "0.6"
+candle-nn = "0.6"
+# Crypto
+sha3 = "0.10"
+blake3 = "1.5"
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+# Testing
+criterion = "0.5"
+proptest = "1.5"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.production]
+inherits = "release"
+debug = false
+overflow-checks = true

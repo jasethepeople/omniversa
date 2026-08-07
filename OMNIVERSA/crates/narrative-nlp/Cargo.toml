@@ -1,0 +1,17 @@
+[package]
+name = "narrative-nlp"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+nalgebra = { workspace = true }
+ndarray = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+tracing = { workspace = true }
+regex = "1.10"
+
+[dev-dependencies]
+criterion = { workspace = true }

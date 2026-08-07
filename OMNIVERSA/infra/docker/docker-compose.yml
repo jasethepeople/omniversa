@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  omniversa-core:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    environment:
+      - RUST_LOG=info
+    depends_on:
+      - redis
+      - clickhouse
+    networks:
+      - omniversa-net
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - omniversa-net
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.3
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    networks:
+      - omniversa-net
+  prometheus:
+    image: prom/prometheus:v2.51
+    ports:
+      - "9091:9090"
+    networks:
+      - omniversa-net
+  grafana:
+    image: grafana/grafana:10.4
+    ports:
+      - "3000:3000"
+    networks:
+      - omniversa-net
+
+networks:
+  omniversa-net:
+    driver: bridge

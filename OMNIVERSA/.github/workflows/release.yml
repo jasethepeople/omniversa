@@ -1,0 +1,17 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dtolnay/rust-toolchain@stable
+    - run: cargo build --release
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: target/release/omniversa-core
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

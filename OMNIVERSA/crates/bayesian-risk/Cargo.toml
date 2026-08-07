@@ -1,0 +1,19 @@
+[package]
+name = "bayesian-risk"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+nalgebra = { workspace = true }
+ndarray = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+tracing = { workspace = true }
+rand = "0.8"
+statrs = "0.16"
+
+[dev-dependencies]
+criterion = { workspace = true }
+proptest = { workspace = true }

@@ -1,0 +1,37 @@
+[package]
+name = "omniversa-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+tokio = { workspace = true }
+rayon = { workspace = true }
+parking_lot = { workspace = true }
+crossbeam = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+nalgebra = { workspace = true }
+ndarray = { workspace = true }
+async-trait = { workspace = true }
+futures = { workspace = true }
+arrow = { workspace = true }
+redis = { workspace = true }
+sha3 = { workspace = true }
+blake3 = { workspace = true }
+
+# Internal
+gavity-whale = { path = "../gravity-whale" }
+cascade-hawkes = { path = "../cascade-hawkes" }
+neural-panic = { path = "../neural-panic" }
+narrative-nlp = { path = "../narrative-nlp" }
+bayesian-risk = { path = "../bayesian-risk" }
+ugt-graph = { path = "../ugt-graph" }
+liquidity-cfd = { path = "../liquidity-cfd" }
+
+[dev-dependencies]
+criterion = { workspace = true }
+proptest = { workspace = true }
